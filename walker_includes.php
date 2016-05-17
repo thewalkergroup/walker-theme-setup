@@ -10,11 +10,11 @@
  * @link https://github.com/roots/sage/pull/1042
  */
 $wss_includes = [
-  'lib/walker-theme-setup/walker_setup.php',              // WSS specific setup
-  'lib/walker-theme-setup/walker_branding.php',           // Brand with The Walker Group logos
-  'lib/walker-theme-setup/wp_bootstrap_navwalker.php', // Bootstrap Navwalker
-  'lib/walker-theme-setup/metaboxes.php',              // Register and manipulate metaboxes
-  'lib/walker-theme-setup/custom_admin.php'            // Add custom scripts and styles to admin
+  'lib/walker-theme-setup/lib/walker_setup.php',              // WSS specific setup
+  'lib/walker-theme-setup/lib/walker_branding.php',           // Brand with The Walker Group logos
+  'lib/walker-theme-setup/lib/wp_bootstrap_navwalker.php', // Bootstrap Navwalker
+  'lib/walker-theme-setup/lib/metaboxes.php',              // Register and manipulate metaboxes
+  'lib/walker-theme-setup/lib/custom_admin.php'            // Add custom scripts and styles to admin
 
 ];
 
