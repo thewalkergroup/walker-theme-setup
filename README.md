@@ -2,7 +2,7 @@
 Short order template drop-in setup
 
 ## Reqirements
-1. A site theme built with [Roots/Sage](https://github.com/roots/sage) (tested with version 8)
+1. A WordPress theme built with [Roots/Sage](https://github.com/roots/sage) (tested with version 8)
 
 ## Usage
 1) Navigate to `[your-theme-name]/lib`
