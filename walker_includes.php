@@ -1,16 +1,15 @@
 <?php
-/**
- * The Walker Group includes
- *
- * The $wss_includes array determines the code library included in your theme.
- * Add or remove files to the array as needed. Supports child theme overrides.
- *
- * Please note that missing files will produce a fatal error.
- *
- * @link https://github.com/roots/sage/pull/1042
- */
+/*
+Plugin Name: The Walker Group Theme Setup
+Plugin URI: 
+Description: Short order template drop-in setup
+Version: 1.0
+Author: Michael W. Delaney
+Author URI: 
+License: MIT
+*/
  
-  define( 'WALKER_THEME_SETUP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'WALKER_THEME_SETUP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 $wss_includes = [
   'lib/walker_setup.php',              // WSS specific setup
@@ -22,6 +21,7 @@ $wss_includes = [
 ];
 
 foreach ($wss_includes as $file) {
+	echo WALKER_THEME_SETUP_PLUGIN_DIR . $file;
   if ( !$filepath = WALKER_THEME_SETUP_PLUGIN_DIR . $file ) {
     trigger_error(sprintf(__('Error locating %s for inclusion', 'sage'), $file), E_USER_ERROR);
   }
