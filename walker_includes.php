@@ -21,7 +21,6 @@ $wss_includes = [
 ];
 
 foreach ($wss_includes as $file) {
-	echo WALKER_THEME_SETUP_PLUGIN_DIR . $file;
   if ( !$filepath = WALKER_THEME_SETUP_PLUGIN_DIR . $file ) {
     trigger_error(sprintf(__('Error locating %s for inclusion', 'sage'), $file), E_USER_ERROR);
   }
