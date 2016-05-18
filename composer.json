@@ -1,0 +1,18 @@
+{
+  "name": "thewalkergroup/walker-theme-setup",
+  "description": "Short order template drop-in setup.",
+  "keywords": ["wordpress", "plugin", "theme-setup"],
+  "homepage": "https://github.com/thewalkergroup/walker-theme-setup",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Michael W. Delaney",
+      "email": "mwdelaney@thewalkergroup.com",
+      "homepage": ""
+    }
+  ],
+  "type": "wordpress-muplugin",
+  "require": {
+    "php": ">=5.3.2"
+  }
+}
