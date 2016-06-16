@@ -29,3 +29,11 @@ foreach ($wss_includes as $file) {
   require_once $filepath;
 }
 unset($file, $filepath);
+
+
+/**
+ * Template tag function for Bootstrap pagination
+ */
+function wp_bootstrap_pagination() {
+ require_once('lib/wp_bootstrap_pagination.php');
+}
