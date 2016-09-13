@@ -1,9 +1,8 @@
 <?php
 
-// ======================================================================== //		
-// Customize login screen
-// ======================================================================== // 
-
+/**
+ * Replace login screen logo with WSS logo
+ */
     function my_login_logo() { ?>
         <style type="text/css">
             body.login div#login h1 a {
@@ -16,5 +15,12 @@
         </style>
     <?php }
     add_action( 'login_enqueue_scripts', 'my_login_logo' );
-
-// ======================================================================== //
+    
+    
+/**
+ * Add "designed and developed..." to admin footer.
+ */
+    add_filter( 'admin_footer_text', 'wss_admin_footer', 11 );
+    function wss_admin_footer($content) {
+        return 'Site Designed and Developed by <a href="http://www.thewalkergroup.com">The Walker Group</a> in Farmington, CT';
+    }
