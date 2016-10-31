@@ -8,11 +8,14 @@
     {
       "name": "Michael W. Delaney",
       "email": "mwdelaney@thewalkergroup.com",
-      "homepage": ""
+      "homepage": "https://www.thewalkergroup.com"
     }
   ],
   "type": "wordpress-muplugin",
   "require": {
     "php": ">=5.3.2"
+  },
+	"autoload": {
+    "psr-4": { "WSS\\Setup\\": "src/" }
   }
 }
