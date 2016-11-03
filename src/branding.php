@@ -7,6 +7,7 @@ class Branding {
 	function __construct() {
 		add_action( 'login_enqueue_scripts', array($this, 'my_login_logo') );
 		add_filter( 'admin_footer_text', array($this, 'wss_admin_footer'), 11 );
+		add_action('init', array($this, 'beaver_branding') );
 	}
 
 	/**
@@ -30,4 +31,13 @@ class Branding {
   function wss_admin_footer($content) {
       return 'Site Designed and Developed by <a href="https://www.thewalkergroup.com">The Walker Group</a> in Farmington, CT';
   }
+
+
+	/**
+	 * Force Beaver Builder branding settings
+	 */
+	 function beaver_branding() {
+		 update_option( '_fl_builder_branding_icon', WALKER_THEME_SETUP_PLUGIN_URL . '/assets/images/page-builder.png', 'yes' );
+	 }
+
 }
