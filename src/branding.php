@@ -8,6 +8,16 @@ class Branding {
 		add_action( 'login_enqueue_scripts', array($this, 'my_login_logo') );
 		add_filter( 'admin_footer_text', array($this, 'wss_admin_footer'), 11 );
 		add_action('init', array($this, 'beaver_branding') );
+		add_action( 'admin_bar_menu', array($this, 'remove_wp_logo'), 999 );
+		add_action('admin_bar_menu', array($this, 'create_wss_menu'), 1);
+		add_action('wp_before_admin_bar_render', array($this, 'wss_menu_custom_logo'));
+	}
+
+	/**
+	 * Remove WordPress admin bar menu
+	 */
+	function remove_wp_logo( $wp_admin_bar ) {
+			$wp_admin_bar->remove_node( 'wp-logo' );
 	}
 
 	/**
@@ -24,6 +34,32 @@ class Branding {
 	        }
 	    </style>
     <?php }
+
+
+		function create_wss_menu() {
+			global $wp_admin_bar;
+			$menu_id = 'wss';
+			$wp_admin_bar->add_node(array('id' => $menu_id, 'title' => '<span class="ab-icon"></span>', 'href' => '/'));
+			$wp_admin_bar->add_node(array('parent' => $menu_id, 'title' => __('Homepage'), 'id' => 'wss-home', 'href' => 'https://www.thewalkergroup.com', 'meta' => array('target' => '_blank')));
+			$wp_admin_bar->add_node(array('parent' => $menu_id, 'title' => __('Support'), 'id' => 'wss-support', 'href' => 'http://www.walker911.com', 'meta' => array('target' => '_blank')));
+		}
+
+
+
+		/**
+		 * Replace login screen logo with WSS logo
+		 */
+	    function wss_menu_custom_logo() { ?>
+		    <style type="text/css">
+					#wpadminbar #wp-admin-bar-wss > .ab-item .ab-icon {
+						height: 26px;
+						width: 26px;
+					}
+					#wpadminbar #wp-admin-bar-wss > .ab-item .ab-icon:before {
+		        content: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIwLjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAyODMuNCAxNDQuMSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMjgzLjQgMTQ0LjE7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbDojRkZGRkZGO30KPC9zdHlsZT4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTIzOS44LDIzLjhjMCwxMC41LDguNSwxOSwxOC45LDE5YzEwLjQsMCwxOC45LTguNSwxOC45LTE5YzAtMTAuNS04LjUtMTktMTguOS0xOQoJQzI0OC4yLDQuOCwyMzkuOCwxMy4zLDIzOS44LDIzLjh6Ii8+CjxnPgoJPGc+CgkJPHBhdGggY2xhc3M9InN0MCIgZD0iTTI1My40LDEwOS40Yy02LjcsMi43LTEzLjYsNC0xOS42LDRjLTEyLjEtMC4yLTIxLjktNS40LTMzLjUtMTMuM2MtMjMtMTYuMi00Mi4zLTM4LjgtNjUuNS01Mi43CgkJCWMtMjMuMS0xNC42LTQ2LjYtMjAuNy03MS0xNy41Yy0xMi4yLDEuNC0yMy41LDQuMS0zNi4yLDYuNGMtNi41LDEuMi0xMi42LDIuMi0xOC43LDMuMmMtMi45LDAuNS02LDAuOS04LjksMS4ybDAuNCwwLjgKCQkJYzIuNywwLjEsNS4zLDAuMiw4LDAuNGM2LDAuMywxMiwwLjUsMTgsMWMxMiwwLjksMjQsMi41LDM1LjgsNS45YzIzLjcsNi40LDQ2LjksMjAuNiw2OS43LDM5LjdjMjIuOCwxOC41LDQ1LjMsNDEuOSw2OC44LDUxLjkKCQkJYzExLjcsNC44LDIzLjcsNiwzNi4zLTAuM2M2LjMtMy4xLDEyLjctOC4yLDE5LjItMTUuN2M2LjYtNy41LDEzLjMtMTcuNCwyMC4zLTMwLjhjMC0wLjYsMC4xLTEuMiwwLjEtMS44CgkJCUMyNzAuOCw5OC4zLDI1OC45LDEwNy4yLDI1My40LDEwOS40eiIvPgoJPC9nPgo8L2c+CjxnPgoJPGc+CgkJPHBhdGggY2xhc3M9InN0MCIgZD0iTTI2OC44LDYyLjRjLTQuNiwyLjUtOS41LDMuMS0xMy45LDIuOUMyNDYsNjUsMjM4LDYwLjksMjI5LjcsNTQuOWMtMTYuNS0xMi4zLTMyLjYtMjkuNy00OS4zLTQwLjMKCQkJYy0xNi43LTExLjEtMzMuOC0xNi01MS43LTE0LjJjLTguOSwwLjgtMTcuMywyLjUtMjYuNiw0Yy00LjgsMC44LTkuMywxLjQtMTMuOCwyYy0yLjEsMC4zLTQuNCwwLjYtNi41LDAuN2wwLjMsMC42CgkJCUM4NCw3LjcsODYsNy45LDg3LjksOGM0LjQsMC4zLDguOCwwLjYsMTMuMiwxLjFjOC44LDAuOSwxNy41LDIuMywyNi4xLDVjMTcuMiw1LjEsMzMuOSwxNiw1MC4zLDMwLjRjMTYuNCwxNCwzMi40LDMxLjUsNDkuNCwzOS4zCgkJCWM4LjUsMy44LDE3LjMsNC44LDI2LjUsMC41YzQuNi0yLjIsOS40LTUuOCwxNC40LTExLjFjNC45LTUuNCwxMC4xLTEyLjUsMTUuNC0yMi4xYzAtMC40LDAuMS0wLjgsMC4xLTEuMwoJCQlDMjc4LjQsNTUsMjczLjQsNTkuOSwyNjguOCw2Mi40eiIvPgoJPC9nPgo8L2c+Cjwvc3ZnPgo=);
+		      }
+		    </style>
+	    <?php }
 
 	/**
 	 * Add "designed and developed..." to admin footer.
