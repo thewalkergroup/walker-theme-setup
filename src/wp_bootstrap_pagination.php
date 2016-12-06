@@ -11,7 +11,7 @@ function wp_bootstrap_pagination( $args = array() ) {
         'custom_query'    => FALSE,
         'previous_string' => __( 'Previous', 'text-domain' ),
         'next_string'     => __( 'Next', 'text-domain' ),
-        'before_output'   => '<div class="post-nav"><ul class="pager">',
+        'before_output'   => '<div class="post-nav"><ul class="pagination">',
         'after_output'    => '</ul></div>'
     );
     
