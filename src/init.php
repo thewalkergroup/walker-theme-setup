@@ -15,10 +15,11 @@ class Init {
 	   *
 	   */
 		 $includes = [
-			 'src/custom_admin.php',   // Sage custom admin scripts and styles
+		   'src/custom_admin.php',   // Sage custom admin scripts and styles
 		   'src/wp_bootstrap_navwalker.php',   // Bootstrap 3 Navwalker
 		   'src/wp_bootstrap4_navwalker.php',   // Bootstrap 4 Navwalker
 		   'src/wp_bootstrap_pagination.php',  // Bootstrap 3 Pagination
+		   'src/wp_bootstrap4_pagination.php',  // Bootstrap 4 Pagination
 		 ];
 
 		 foreach ($includes as $file) {
