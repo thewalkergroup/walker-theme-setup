@@ -65,7 +65,7 @@ function wp_bootstrap4_pagination( $args = array() ) {
             if ($page == $i) {
                 $echo .= '<li class="page-item active"><a class="page-link">' . str_pad( (int)$i, 2, '0', STR_PAD_LEFT ) . '</a></li>';
             } else {
-                $echo .= sprintf( '<li class="page-item><a class="page-link href="%s">%002d</a></li>', esc_attr( get_pagenum_link($i) ), $i );
+                $echo .= sprintf( '<li class="page-item><a class="page-link" href="%s">%002d</a></li>', esc_attr( get_pagenum_link($i) ), $i );
             }
         }
     }
