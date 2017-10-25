@@ -53,13 +53,13 @@ function wp_bootstrap4_pagination( $args = array() ) {
 
     $firstpage = esc_attr( get_pagenum_link(1) );
     if ( $firstpage && (1 != $page) )
-        $echo .= '<li class="page-item"><a class="page-link" href="' . $firstpage . '">' . __( 'First', 'text-domain' ) . '</a></li>';
+        $echo .= '<li class="page-item first"><a class="page-link" href="' . $firstpage . '">' . __( 'First', 'text-domain' ) . '</a></li>';
     else
-        $echo .= '<li class="page-item disabled"><a class="page-link" href="#">' . __( 'First', 'text-domain' ) . '</a></li>';
+        $echo .= '<li class="page-item first disabled"><a class="page-link" href="#">' . __( 'First', 'text-domain' ) . '</a></li>';
     if ( $previous && (1 != $page) )
-        $echo .= '<li class="page-item"><a class="page-link" href="' . $previous . '" title="' . __( 'previous', 'text-domain') . '">' . $args['previous_string'] . '</a></li>';
+        $echo .= '<li class="page-item previous"><a class="page-link" href="' . $previous . '" title="' . __( 'previous', 'text-domain') . '">' . $args['previous_string'] . '</a></li>';
     else
-        $echo .= '<li class="page-item disabled"><a class="page-link" href="#" title="' . __( 'previous', 'text-domain') . '">' . $args['previous_string'] . '</a></li>';
+        $echo .= '<li class="page-item previous disabled"><a class="page-link" href="#" title="' . __( 'previous', 'text-domain') . '">' . $args['previous_string'] . '</a></li>';
     if ( !empty($min) && !empty($max) ) {
         for( $i = $min; $i <= $max; $i++ ) {
             if ($page == $i) {
@@ -73,14 +73,14 @@ function wp_bootstrap4_pagination( $args = array() ) {
     $next = intval($page) + 1;
     $next = esc_attr( get_pagenum_link($next) );
     if ($next && ($count != $page) )
-        $echo .= '<li class="page-item"><a class="page-link" href="' . $next . '" title="' . __( 'next', 'text-domain') . '">' . $args['next_string'] . '</a></li>';
+        $echo .= '<li class="page-item next"><a class="page-link" href="' . $next . '" title="' . __( 'next', 'text-domain') . '">' . $args['next_string'] . '</a></li>';
     else
-        $echo .= '<li class="page-item disabled"><a class="page-link" href="#" title="' . __( 'next', 'text-domain') . '">' . $args['next_string'] . '</a></li>';
+        $echo .= '<li class="page-item next disabled"><a class="page-link" href="#" title="' . __( 'next', 'text-domain') . '">' . $args['next_string'] . '</a></li>';
     $lastpage = esc_attr( get_pagenum_link($count) );
     if ( $lastpage && ($count != $page))  {
-        $echo .= '<li class="page-item next"><a class="page-link" href="' . $lastpage . '">' . __( 'Last', 'text-domain' ) . '</a></li>';
+        $echo .= '<li class="page-item last"><a class="page-link" href="' . $lastpage . '">' . __( 'Last', 'text-domain' ) . '</a></li>';
     } else {
-      $echo .= '<li class="page-item disabled"><a class="page-link" href="' . $lastpage . '">' . __( 'Last', 'text-domain' ) . '</a></li>';
+      $echo .= '<li class="page-item last disabled"><a class="page-link" href="' . $lastpage . '">' . __( 'Last', 'text-domain' ) . '</a></li>';
     }
     if ( isset($echo) )
         echo $args['before_output'] . $echo . $args['after_output'];
