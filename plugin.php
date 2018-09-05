@@ -21,7 +21,7 @@ define( 'WALKER_THEME_SETUP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 $wss_branding = new \WSS\Setup\Branding();
 
-$wss_metaboxes = new \WSS\Setup\Init();
+$wss_init = new \WSS\Setup\Init();
 
 $wss_acf = new \WSS\Setup\ACF();
 
